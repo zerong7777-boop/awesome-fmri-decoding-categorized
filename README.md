@@ -174,6 +174,8 @@ MindLLM: A Subject-Agnostic and Versatile Model for fMRI-to-Text Decoding
 MindGPT: Interpreting What You See With Non-Invasive Brain Recordings  
 [[IEEE TIP 2025 / arXiv 2023](https://arxiv.org/abs/2309.15729)] [[Code](https://github.com/JxuanC/MindGPT)]
 
+High-level visual representations in the human brain are aligned with large language models  
+[[Nature Machine Intelligence 2025](https://www.nature.com/articles/s42256-025-01072-0)] [[arXiv](https://arxiv.org/abs/2209.11737)] [[Code](https://github.com/adriendoerig/visuo_llm)]
 
 ### 3.2 LLM-Prompt and Auditory Language Decoding
 
