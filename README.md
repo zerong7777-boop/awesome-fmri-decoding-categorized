@@ -30,6 +30,8 @@ If you find this repo helpful, please give it a ⭐ and consider contributing ne
 
 ## 1. Surveys and Overviews
 
+> **Scope:** 全局综述 / review / tutorial，介绍 fMRI 解码或 brain-conditional 生成的大图景。
+
 A Survey on fMRI-based Brain Decoding for Reconstructing Multimodal Stimuli  
 [[arXiv 2025](https://arxiv.org/abs/2503.15978)]
 
@@ -39,11 +41,11 @@ Brain-Conditional Multimodal Synthesis: A Survey and Taxonomy
 Deep Generative Models in Brain Encoding and Decoding  
 [[Engineering 2019](https://doi.org/10.1016/j.eng.2019.03.011)]
 
-> 欢迎补充其它综述，比如 language-decoding / BCI 方向的 review。
-
 ---
 
 ## 2. Datasets and Benchmarks
+
+> **Scope:** 公开的 fMRI 数据集 / benchmark（视觉、语言、音频等），不按方法，只按数据。
 
 Natural Scenes Dataset (NSD)  
 [[Website](https://naturalscenesdataset.org/)] [[Data](https://osf.io/9pjky/)]
@@ -57,11 +59,13 @@ Narratives / Story listening datasets
 Semantic reconstruction of continuous language – dataset  
 [[OpenNeuro ds003020](https://openneuro.org/datasets/ds003020)]
 
-> 也可以加入 Vim-1、BOLD5000、GOD / THINGS、CelebA-face、movie fMRI 等数据集。
+*(More welcome: Vim-1, BOLD5000, GOD / THINGS, CelebrityFace, various movie fMRI datasets, etc.)*
 
 ---
 
 ## 3. Language / Narrative Decoding (Brain → Text)
+
+> **Scope:** 输出是「文本」：句子、段落、故事摘要、caption 等（fMRI → text）。
 
 Semantic reconstruction of continuous language from non-invasive brain recordings  
 [[Nature Neuroscience 2023](https://www.nature.com/articles/s41593-023-01304-9)] [[Code](https://github.com/HuthLab/semantic-decoding)] [[Dataset](https://openneuro.org/datasets/ds003020)]
@@ -69,13 +73,17 @@ Semantic reconstruction of continuous language from non-invasive brain recording
 Brain-Inspired fMRI-to-Text Decoding via Incremental and Wrap-Up Language Modeling (CogReader)  
 [[NeurIPS 2025 Spotlight](https://openreview.net/forum?id=REIo9ZLSYo)] [[PDF](https://openreview.net/pdf?id=REIo9ZLSYo)]
 
-> 这一类主要是 **fMRI → 文本 / 故事摘要 / caption**。可以继续补充 UniCoRN、BP-GPT 等工作。
+*(More fMRI→text / narrative decoding works can be added here.)*
 
 ---
 
 ## 4. Visual Image Reconstruction (Brain → Image)
 
+> **Scope:** 输出是「静态图像」。根据方法特点再细分为 4.1–4.6。
+
 ### 4.1 Classical and Pre-Generative
+
+> 早期方法：不用现代 deep generative models 的图像重建 / 解码。
 
 Reconstructing Natural Scenes from fMRI Patterns using Hierarchical Visual Features  
 [[NeuroImage 2011](https://doi.org/10.1016/j.neuroimage.2010.07.063)]
@@ -83,6 +91,8 @@ Reconstructing Natural Scenes from fMRI Patterns using Hierarchical Visual Featu
 ---
 
 ### 4.2 GAN / VAE-based
+
+> 主生成器是 GAN / VAE / self-supervised convnets，而不是 diffusion。
 
 Deep image reconstruction from human brain activity  
 [[PLoS Comput Biol 2019](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006633)] [[Code](https://github.com/KamitaniLab/DeepImageReconstruction)] [[Dataset](https://openneuro.org/datasets/ds001506)]
@@ -97,6 +107,8 @@ Reconstructing Natural Scenes from fMRI Patterns using BigBiGAN
 
 ### 4.3 Diffusion-based Reconstruction
 
+> 使用 diffusion / latent diffusion / Stable Diffusion 作为生成 prior 的 fMRI→image 方法。
+
 High-resolution image reconstruction with latent diffusion models from human brain activity  
 [[CVPR 2023](https://openaccess.thecvf.com/content/CVPR2023/html/Takagi_High-Resolution_Image_Reconstruction_With_Latent_Diffusion_Models_From_Human_Brain_CVPR_2023_paper.html)] [[Project](https://sites.google.com/view/stablediffusion-with-brain/)] [[Code](https://github.com/yu-takagi/StableDiffusionReconstruction)]
 
@@ -110,32 +122,31 @@ MindDiffuser: Controlled Image Reconstruction from Human Brain Activity with Sem
 [[ACM MM 2023](https://dl.acm.org/doi/10.1145/3581783.3613819)] [[arXiv](https://arxiv.org/abs/2308.04249)] [[Code](https://github.com/YingxingLu/MindDiffuser)]
 
 NeuralDiffuser: Neuroscience-Inspired Diffusion Guidance for fMRI Visual Reconstruction  
-[[IEEE TIP 2025](https://ieeexplore.ieee.org/document/10749645)] [[arXiv](https://arxiv.org/abs/2401.01713)] [[Code](https://github.com/HaoyyLi/NeuralDiffuser)]
+[[IEEE TIP 2025](https://ieeexplore.ieee.org/document/10749645)] [[arXiv](https://arxiv.org/abs/2401.01713)]
 
 Mental image reconstruction from human brain activity  
 [[Neural Networks 2024](https://www.sciencedirect.com/science/article/pii/S0893608023006470)]
-
-FreqSelect: Frequency-Aware fMRI-to-Image Reconstruction  
-[[arXiv 2025](https://arxiv.org/abs/2505.12552)] [[PDF (BMVC 2025)](https://bmva-archive.org.uk/bmvc/2025/assets/papers/Paper_486/paper.pdf)]
 
 ---
 
 ### 4.4 Cross-Subject and Generalizable Decoding
 
+> 依然是 Brain→Image，但重点在 **跨被试泛化 / 少样本适配 / MoE / shared-subject**。
+
 MindEye2: Shared-Subject Models Enable fMRI-To-Image With 1 Hour of Data  
 [[ICML 2024](https://proceedings.mlr.press/v235/scotti24a.html)] [[arXiv](https://arxiv.org/abs/2403.11207)] [[Project](https://medarc-ai.github.io/mindeye2/)] [[Code](https://github.com/MedARC-AI/MindEyeV2)]
 
 ZEBRA: Towards Zero-Shot Cross-Subject Generalization for Universal Brain Visual Decoding  
-[[arXiv 2025](https://arxiv.org/abs/2510.27128)]
+[[OpenReview](https://openreview.net/pdf/7a4f583ef54685490be5c58986a3ad803aac087c)] [[Code](https://github.com/xmed-lab/ZEBRA)]
 
 MoRE-Brain: Routed Mixture of Experts for Interpretable and Generalizable Cross-Subject fMRI Visual Decoding  
-[[arXiv 2025](https://arxiv.org/abs/2505.15946)] [[OpenReview](https://openreview.net/forum?id=fYSPRGmS6l)]
-
-> 这一类主要关注：跨被试泛化、少样本适配、共享模型等。
+[[OpenReview](https://openreview.net/forum?id=fYSPRGmS6l)] [[arXiv](https://arxiv.org/abs/2505.15946)] [[Code](https://github.com/yuxiangwei0808/MoRE-Brain)]
 
 ---
 
 ### 4.5 Interpretability and Concept-Level Decoding
+
+> Brain→Image，同时显式强调 **可解释性 / 概念层 / semantic bottleneck**。
 
 MindReader: Reconstructing complex images from brain activities  
 [[NeurIPS 2022](https://arxiv.org/abs/2209.12951)] [[Code](https://github.com/yuvalsim/MindReader)]
@@ -147,14 +158,18 @@ Bridging Brains and Concepts: Interpretable Visual Decoding from fMRI with Seman
 
 ### 4.6 Visual-to-fMRI Synthesis and Data Augmentation
 
+> 方向反过来：**Image → fMRI**，但常用于合成 / 增广 fMRI，提升解码性能。
+
 SynBrain: Enhancing Visual-to-fMRI Synthesis via Probabilistic Representation Learning  
 [[arXiv 2025](https://arxiv.org/abs/2508.10298)] [[OpenReview](https://openreview.net/forum?id=ZTHYaSxqmq)]
 
-> 这一小节偏 **image → fMRI 编码 / 合成**，但经常被用来做数据增强或辅助解码。
+*(Add more visual→fMRI encoders / synthesizers here.)*
 
 ---
 
 ## 5. Video and Dynamic Scene Decoding
+
+> **Scope:** 输出是 **video / 动态帧 / 动态特征**，通常是 movie fMRI。
 
 Visual experience reconstruction from movie fMRI  
 [[Current Biology 2011](https://doi.org/10.1016/j.cub.2011.01.031)]
@@ -162,11 +177,13 @@ Visual experience reconstruction from movie fMRI
 CLSR: Decoding complex video and story stimuli from fMRI  
 [[Nature Neuroscience 2023](https://doi.org/10.1038/s41593-023-01327-2)]
 
-> 可以继续加入 fMRI → video / caption / scene graph 等工作。
+*(Add movie fMRI → video / caption / dynamic scene decoding works here.)*
 
 ---
 
 ## 6. Multimodal and Foundation-Model-based Decoding
+
+> **Scope:** 使用 CLIP / Stable Diffusion / VLM / LMM 等 **foundation models**，统一解多种模态（图像 + 文本等）的解码框架。
 
 UMBRAE: Unified Multimodal Brain Decoding  
 [[ECCV 2024](https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/01133.pdf)] [[arXiv](https://arxiv.org/abs/2404.07202)] [[Project](https://weihaox.github.io/UMBRAE/)] [[Code](https://github.com/weihaox/UMBRAE)]
@@ -174,23 +191,29 @@ UMBRAE: Unified Multimodal Brain Decoding
 MindReader: Reconstructing complex images from brain activities  
 [[NeurIPS 2022](https://arxiv.org/abs/2209.12951)] [[Code](https://github.com/yuvalsim/MindReader)]
 
-> 这里收集利用 CLIP / Stable Diffusion / 多模态 LLM、VLM 等 **foundation models** 做 brain decoding 的工作。
+*(More “unified multimodal” or foundation-model-centric decoders can be added here.)*
 
 ---
 
 ## 7. Audio and Music Decoding
 
-(占位：添加基于 fMRI 的音乐 / 自然声音 / 语音类别或情绪解码等工作。)
+> **Scope:** fMRI → 音频 / 音乐：音乐旋律、音色、自然声音类别、speech waveform 等。
+
+*(Placeholder – add music / sound decoding works here.)*
 
 ---
 
 ## 8. Clinical / Cognitive and Mental-State Decoding
 
-(占位：情绪、心理状态、疾病 marker 等基于 fMRI decoding 的应用。)
+> **Scope:** fMRI 解码用于 emotion / cognitive load / disease marker / mental state 等临床或认知应用。
+
+*(Placeholder – add clinical / cognitive decoding works here.)*
 
 ---
 
 ## 9. Toolboxes and Awesome Lists
+
+> **Scope:** 通用代码库、预处理工具、以及其它 awesome 列表。
 
 DeepImageReconstruction codebase  
 [[GitHub](https://github.com/KamitaniLab/DeepImageReconstruction)]
@@ -204,7 +227,7 @@ MindEye2 implementation
 Brain-Diffuser implementation  
 [[GitHub](https://github.com/ozcelikfu/brain-diffuser)]
 
-UMBRAE  
+UMBRAE implementation  
 [[GitHub](https://github.com/weihaox/UMBRAE)]
 
 awesome-brain-decoding (general, multi-modality)  
@@ -216,7 +239,7 @@ Awesome Brain Encoding & Decoding
 Awesome Brain Graph Learning with GNNs  
 [[GitHub](https://github.com/XuexiongLuoMQ/Awesome-Brain-Graph-Learning-with-GNNs)]
 
-> 也可以列出 fMRIPrep、nilearn 等预处理 / 可视化工具。
+*(You can also add fMRIPrep, nilearn, visualization tools, etc.)*
 
 ---
 
@@ -224,7 +247,7 @@ Awesome Brain Graph Learning with GNNs
 
 Contributions are welcome! 🎉  
 
-**推荐的条目格式：**
+**Recommended entry format:**
 
 ```markdown
 Paper Title  
