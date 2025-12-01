@@ -168,6 +168,10 @@ MapGuide: A Simple yet Effective Method to Reconstruct Continuous Language from 
 MindLLM: A Subject-Agnostic and Versatile Model for fMRI-to-Text Decoding  
 [[arXiv 2025](https://arxiv.org/abs/2502.15786)]
 
+MindGPT: Interpreting What You See With Non-Invasive Brain Recordings  
+[[IEEE TIP 2025](https://ieeexplore.ieee.org/document/xxxxx)] [[Code](https://github.com/JxuanC/MindGPT)]
+
+
 ### 3.2 LLM-Prompt and Auditory Language Decoding
 
 Open-vocabulary Auditory Neural Decoding Using fMRI-prompted LLM (Brain Prompt GPT / BP-GPT)  
@@ -268,6 +272,9 @@ BrainGuard: Privacy-Preserving Multisubject Image Reconstructions from Brain Act
 
 MoRE-Brain: Routed Mixture of Experts for Interpretable and Generalizable Cross-Subject fMRI Visual Decoding  
 [[OpenReview](https://openreview.net/forum?id=fYSPRGmS6l)] [[arXiv](https://arxiv.org/abs/2505.15946)] [[Code](https://github.com/yuxiangwei0808/MoRE-Brain)]
+
+Inter-individual and inter-site neural code conversion without shared stimuli  
+[[Nature Computational Science 2025](https://doi.org/10.1038/s43588-025-00826-5)]
 
 ---
 
@@ -409,6 +416,10 @@ Advances in Functional Magnetic Resonance Imaging-Based Brain Decoding and Its C
 Machine Learning for Classifying Affective Valence from fMRI: A Systematic Review  
 [[Affective Science 2025](https://link.springer.com/article/10.1007/s44163-025-00377-8)]
 
+Brain Harmony: A Multimodal Foundation Model Unifying Morphology and Function into 1D Tokens  
+[[NeurIPS 2025](https://github.com/hzlab/Brain-Harmony)]
+
+
 ### 8.2 Cognitive Task and Performance Decoding
 
 BrainCodec: Neural fMRI Codec for the Decoding of Cognitive Brain States  
@@ -419,6 +430,10 @@ Brain Decoding of the Human Connectome Project Tasks in a Dense Individual fMRI 
 
 Explainable Deep-Learning Framework: Decoding Brain Task and Predicting Individual Performance in False-Belief Tasks at Early Childhood Stage  
 [[Preprint 2024](https://www.biorxiv.org/content/10.1101/2024.02.29.582682v1)]
+
+Scaling Vision Transformers for Functional MRI with Flat Maps  
+[[NeurIPS 2025 (submitted)](link_to_preprint)]
+
 
 ### 8.3 Methodological and Conceptual Perspectives on Mental-State Decoding
 
@@ -492,6 +507,10 @@ fmralign – functional alignment and inter-subject mapping
 
 bdpy – Brain Decoder Toolbox in Python  
 [[GitHub](https://github.com/KamitaniLab/bdpy)]
+
+NextBrain: A probabilistic histological atlas of the human brain for MRI segmentation  
+[[Nature 2025](https://doi.org/10.1038/s41586-025-09708-2)]
+
 
 ### 9.3 Awesome Lists and Related Curations
 
