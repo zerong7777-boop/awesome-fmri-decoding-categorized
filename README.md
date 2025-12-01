@@ -1,6 +1,6 @@
 # Awesome fMRI Decoding (Categorized)
 
-A curated list of **fMRI-based brain decoding** papers, datasets and code, focusing on **reconstructing images / videos / language / audio from brain activity**.
+A curated list of **fMRI-based brain decoding** resources, focusing on **reconstructing images, videos, language, and audio from brain activity**.
 
 If you find this repo helpful, please give it a ⭐ and consider contributing new papers via pull requests.
 
@@ -8,158 +8,247 @@ If you find this repo helpful, please give it a ⭐ and consider contributing ne
 
 ## Contents
 
-1. [Survey & Overview](#survey--overview)
-2. [Datasets & Benchmarks](#datasets--benchmarks)
-3. [Language & Narrative Decoding (Brain → Text)](#language--narrative-decoding-brain--text)
-4. [Visual Image Reconstruction (Brain → Image)](#visual-image-reconstruction-brain--image)
-   - [Early & Pre-generative Works](#early--pre-generative-works)
-   - [GAN / VAE–based](#gan--vae-based)
-   - [Diffusion-based](#diffusion-based)
-   - [Cross-Subject & Mixture-of-Experts](#cross-subject--mixture-of-experts)
-5. [Video & Dynamic Scene Decoding](#video--dynamic-scene-decoding)
-6. [Visual-to-fMRI Encoding & Data Augmentation](#visual-to-fmri-encoding--data-augmentation)
-7. [Audio & Music Decoding](#audio--music-decoding)
-8. [Multimodal & Foundation-Model-based Decoding](#multimodal--foundation-model-based-decoding)
-9. [Clinical / Cognitive & Mental-State Decoding](#clinical--cognitive--mental-state-decoding)
-10. [Toolboxes, Tutorials & Awesome Lists](#toolboxes-tutorials--awesome-lists)
-11. [Contributing](#contributing)
+- [0. Survey & Background](#0-survey--background)
+  - [0.1 Survey & Overview](#01-survey--overview)
+  - [0.2 Tutorials & Intro Reading](#02-tutorials--intro-reading)
+- [1. Resources](#1-resources)
+  - [1.1 Datasets & Benchmarks](#11-datasets--benchmarks)
+  - [1.2 Toolboxes & Codebases](#12-toolboxes--codebases)
+  - [1.3 Other Awesome Lists](#13-other-awesome-lists)
+- [2. fMRI Decoding Methods (by Task)](#2-fmri-decoding-methods-by-task)
+  - [2.1 Brain → Image (Static Vision)](#21-brain--image-static-vision)
+    - [2.1.1 Early / Pre-deep](#211-early--pre-deep)
+    - [2.1.2 GAN / VAE–based](#212-gan--vae-based)
+    - [2.1.3 Diffusion-based](#213-diffusion-based)
+    - [2.1.4 Cross-subject / Few-shot / MoE](#214-cross-subject--few-shot--moe)
+  - [2.2 Brain → Video / Dynamic Scene](#22-brain--video--dynamic-scene)
+  - [2.3 Brain → Text / Narrative](#23-brain--text--narrative)
+  - [2.4 Brain → Audio / Music](#24-brain--audio--music)
+  - [2.5 Multimodal & Foundation-Model-based Decoding](#25-multimodal--foundation-model-based-decoding)
+  - [2.6 Clinical / Cognitive / Mental-State Decoding](#26-clinical--cognitive--mental-state-decoding)
+- [3. Related fMRI Modeling](#3-related-fmri-modeling)
+  - [3.1 Visual → fMRI Encoding & Data Augmentation](#31-visual--fmri-encoding--data-augmentation)
+  - [3.2 Multimodal fMRI + EEG / MEG](#32-multimodal-fmri--eeg--meg)
+  - [3.3 Representation Alignment & Analysis](#33-representation-alignment--analysis)
+- [Contributing](#contributing)
 
 ---
 
-## Survey & Overview
+## 0. Survey & Background
 
-**A Survey on fMRI-based Brain Decoding for Reconstructing Multimodal Stimuli** (arXiv 2025) – Recent survey of fMRI-based decoding for images, text, audio and video, with taxonomy of tasks and models.  [📄 Paper](https://arxiv.org/abs/2503.15978)  •  [💻 Project Code](https://github.com/LpyNow/BrainDecodingImage)
+### 0.1 Survey & Overview
 
-**Brain-Conditional Multimodal Synthesis: A Survey and Taxonomy** (IEEE TAI 2025) – Survey of brain-conditional generative models (image, audio, text) with taxonomy and evaluation protocols.  [📄 Paper](https://www.computer.org/csdl/journal/ai/2025/05/10798967/22EatqRGQxO)
+**A Survey on fMRI-based Brain Decoding for Reconstructing Multimodal Stimuli**  
+[📄 Paper](https://arxiv.org/abs/2503.15978) • [💻 Project](https://github.com/LpyNow/BrainDecodingImage) • _[Survey]_
 
-**Deep Generative Models in Brain Encoding and Decoding** (Engineering 2019) – Early review of using deep generative models for brain encoding/decoding.  [📄 Paper](https://doi.org/10.1016/j.eng.2019.03.011)
+**Brain-Conditional Multimodal Synthesis: A Survey and Taxonomy**  
+[📄 Paper](https://www.computer.org/csdl/journal/ai/2025/05/10798967/22EatqRGQxO) • _[Survey]_
 
----
+**Deep Generative Models in Brain Encoding and Decoding**  
+[📄 Paper](https://doi.org/10.1016/j.eng.2019.03.011) • _[Survey]_
 
-## Datasets & Benchmarks
+### 0.2 Tutorials & Intro Reading
 
-**Natural Scenes Dataset (NSD)** – High-resolution 7T fMRI while subjects view thousands of natural images; widely used for visual reconstruction.  [🌐 Website](https://naturalscenesdataset.org/)  •  [📂 Data](https://osf.io/9pjky/)
-
-**Deep Image Reconstruction (DIR) dataset** – fMRI data for the Kamitani *Deep Image Reconstruction* study.  [📂 Data](https://openneuro.org/datasets/ds001506)
-
-**Narratives / Story Listening datasets** – Long-form spoken story comprehension, used for fMRI-to-text decoding.  [🌐 Narratives Lab](https://www.narrativeslab.org/)  •  [📂 Data](https://openneuro.org/datasets/ds002345)
-
-**Semantic reconstruction of continuous language – dataset** – Data accompanying Tang et al., Nat Neurosci 2023.  [📂 Data](https://openneuro.org/datasets/ds003020)
-
+*(Feel free to add blog posts, lecture notes, or tutorial-style papers here.)*
 
 ---
 
-## Language & Narrative Decoding (Brain → Text)
+## 1. Resources
 
-**Semantic Reconstruction of Continuous Language from Non-invasive Brain Recordings** (Nat Neurosci 2023) – fMRI-to-text decoder that reconstructs continuous language from cortical semantic representations.  [📄 Paper](https://www.nature.com/articles/s41593-023-01304-9)  •  [💻 Code](https://github.com/HuthLab/semantic-decoding)  •  [📂 Dataset](https://openneuro.org/datasets/ds003020)
+### 1.1 Datasets & Benchmarks
 
-**UniCoRN: Unified Cognitive Signal ReconstructioN Bridging Cognitive Signals and Human Language** (ACL 2023) – Proposes the fMRI2text task and a unified encoder for fMRI/EEG with a pretrained language model decoder.  [📄 Paper](https://arxiv.org/abs/2307.05355)  •  [💻 Code](https://github.com/DUTIR-ESLab/UniCoRN)
+**Natural Scenes Dataset (NSD)** – Large-scale 7T visual fMRI dataset.  
+[🌐 Website](https://naturalscenesdataset.org/) • [📂 Data](https://osf.io/9pjky/) • _[Vision]_
 
-**Brain-Inspired fMRI-to-Text Decoding via Incremental and Wrap-Up Language Modeling (CogReader)** (NeurIPS 2025 Spotlight) – NeurIPS 2025 work that mimics human segmented language comprehension; decodes long narratives with segment-wise incremental decoding and wrap-up integration.  [📄 Paper](https://openreview.net/forum?id=REIo9ZLSYo)  •  [💻 Code](https://github.com/WENXUYUN/CogReader)
+**Deep Image Reconstruction (DIR) dataset** – Data for Kamitani *Deep Image Reconstruction* experiments.  
+[📂 Data](https://openneuro.org/datasets/ds001506) • _[Vision]_
 
+**Narratives / Story listening datasets** – Long-form spoken stories for language / narrative decoding.  
+[🌐 Website](https://www.narrativeslab.org/) • [📂 Data](https://openneuro.org/datasets/ds002345) • _[Audio] [Language]_
 
----
+**Semantic reconstruction of continuous language – dataset** – Accompanies Tang et al. fMRI-to-text work.  
+[📂 Data](https://openneuro.org/datasets/ds003020) • _[Audio] [Language]_
 
-## Visual Image Reconstruction (Brain → Image)
+*(More welcome: Vim-1, BOLD5000, GOD, movie-watching datasets, etc.)*
 
-### Early & Pre-generative Works
+### 1.2 Toolboxes & Codebases
 
-**Reconstructing Natural Scenes from fMRI Patterns Using Hierarchical Visual Features** (NeuroImage 2011) – Uses Gabor and Gist-like features plus Bayesian decoding to reconstruct natural images from early visual cortex.  [📄 Paper](https://doi.org/10.1016/j.neuroimage.2010.07.063)
+**DeepImageReconstruction** – End-to-end pipeline for visual fMRI → image reconstruction.  
+[💻 Code](https://github.com/KamitaniLab/DeepImageReconstruction)
 
-**Visual Experience Reconstruction from Movie fMRI** (Current Biology 2011) – Classic work reconstructing low-resolution movies from fMRI responses during movie watching.  [📄 Paper](https://doi.org/10.1016/j.cub.2011.01.031)
+**semantic-decoding** – Implementation of semantic reconstruction of continuous language from fMRI.  
+[💻 Code](https://github.com/HuthLab/semantic-decoding)
 
-### GAN / VAE–based
+**MindReader** – CLIP + StyleGAN2–based fMRI visual reconstructor.  
+[💻 Code](https://github.com/yuvalsim/MindReader)
 
-**Deep Image Reconstruction from Human Brain Activity** (PLoS Comput Biol 2019) – Maps fMRI to DNN feature space and reconstructs images via a deep generative model.  [📄 Paper](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006633)  •  [💻 Code](https://github.com/KamitaniLab/DeepImageReconstruction)  •  [📂 Dataset](https://openneuro.org/datasets/ds001506)
+**MindEye2** – Shared-subject fMRI-to-image reconstruction with 1 hour of data per new subject.  
+[💻 Code](https://github.com/MedARC-AI/MindEyeV2)
 
-**From Voxels to Pixels and Back: Self-supervision in Natural-Image Reconstruction from fMRI** (NeurIPS 2019) – Self-supervised framework aligning fMRI with deep visual features for image reconstruction.  [📄 Paper](https://arxiv.org/abs/1907.02431)  •  [💻 Code](https://github.com/WeizmannVision/ssfmri2im)
+*(You can also list fMRIPrep, nilearn, etc. here if you want preprocessing tools.)*
 
-**Reconstructing Natural Scenes from fMRI Patterns Using BigBiGAN** (preprint) – Uses BigBiGAN latent space for fMRI-to-image reconstruction.  [📄 Paper](https://arxiv.org/abs/2011.12243)
+### 1.3 Other Awesome Lists
 
-### Diffusion-based
+**awesome-brain-decoding** – General brain decoding list (EEG / MEG / fMRI / ECoG).  
+[📦 GitHub](https://github.com/NeuSpeech/awesome-brain-decoding)
 
-**Brain-Diffuser: Natural Scene Reconstruction from fMRI Signals Using Generative Latent Diffusion** (Sci Rep 2023) – Conditions latent diffusion on fMRI-aligned deep features to reconstruct images on NSD.  [📄 Paper](https://www.nature.com/articles/s41598-023-42891-8)  •  [💻 Code](https://github.com/ozcelikfu/brain-diffuser)  •  [📂 Dataset: NSD](https://naturalscenesdataset.org/)
+**Awesome Brain Encoding & Decoding** – Mixed encoding/decoding collection.  
+[📦 GitHub](https://github.com/subbareddy248/Awesome-Brain-Encoding--Decoding)
 
-**Reconstructing the Mind’s Eye: fMRI-to-Image with Contrastive Learning and Diffusion Priors (MindEye)** (NeurIPS 2023) – Contrastive fMRI-to-CLIP encoder plus diffusion prior for high-fidelity reconstructions.  [📄 Paper](https://arxiv.org/abs/2305.18274)  •  [🌐 Project](https://medarc-ai.github.io/mindeye/)  •  [💻 Code](https://github.com/MedARC-AI/fMRI-reconstruction-NSD)
-
-**MindDiffuser: Controlled Image Reconstruction from Human Brain Activity with Semantic and Structural Diffusion** (ACM MM 2023) – Two-stage semantic and structural diffusion with extra controllability.  [📄 Paper](https://arxiv.org/abs/2308.04249)  •  [💻 Code](https://github.com/YingxingLu/MindDiffuser)
-
-**NeuralDiffuser: Neuroscience-Inspired Diffusion Guidance for fMRI Visual Reconstruction** (IEEE TIP 2025) – Introduces neuroscience-inspired guidance signals to steer diffusion sampling using fMRI activity.  [📄 Paper](https://arxiv.org/abs/2401.01713)  •  [💻 Code](https://github.com/neu-diffusion/NeuralDiffuser)
-
-**Mental Image Reconstruction from Human Brain Activity** (Neural Networks 2024) – Uses diffusion priors with additional perceptual and semantic constraints for mental image reconstruction.  [📄 Paper](https://www.sciencedirect.com/science/article/pii/S0893608023006470)
-
-**Bridging Brains and Concepts: Interpretable Visual Decoding from fMRI with Semantic Bottlenecks** (NeurIPS 2025 Poster) – Inserts an explicit semantic bottleneck into the fMRI-to-image pipeline for concept-level interpretability, building on diffusion-based visual decoders.  [📄 Paper](https://openreview.net/forum?id=K6ijewH34E)  •  [📄 PDF](https://openreview.net/pdf/167d5c3c08cdd7367883eeec0b26002c059215f8.pdf)  •  [🌐 NeurIPS page](https://neurips.cc/virtual/2025/poster/118670)
-
-### Cross-Subject & Mixture-of-Experts
-
-**ZEBRA: Towards Zero-Shot Cross-Subject Generalization for Universal Brain Visual Decoding** (NeurIPS 2025 Poster) – Disentangles subject-specific and semantic components of fMRI via adversarial training, enabling zero-shot cross-subject image reconstruction.  [📄 Paper](https://arxiv.org/abs/2510.27128)  •  [📄 PDF](https://openreview.net/pdf/7a4f583ef54685490be5c58986a3ad803aac087c.pdf)  •  [💻 Code](https://github.com/xmed-lab/ZEBRA)
-
-**MoRE-Brain: Routed Mixture of Experts for Interpretable and Generalizable Cross-Subject fMRI Visual Decoding** (NeurIPS 2025 Poster) – Routed mixture-of-experts mapping fMRI to CLIP space with subject-specific routers and diffusion decoder; emphasizes interpretability of expert routing.  [📄 Paper](https://arxiv.org/abs/2505.15946)  •  [🌐 OpenReview](https://openreview.net/forum?id=fYSPRGmS6l)  •  [💻 Code](https://github.com/yuxiangwei0808/MoRE-Brain)
-
+**Awesome Brain Graph Learning with GNNs** – GNN-based brain graph learning and analysis.  
+[📦 GitHub](https://github.com/XuexiongLuoMQ/Awesome-Brain-Graph-Learning-with-GNNs)
 
 ---
 
-## Video & Dynamic Scene Decoding
+## 2. fMRI Decoding Methods (by Task)
 
-**Visual Experience Reconstruction from Movie fMRI** (Current Biology 2011) – Reconstructs natural movies from early visual cortex responses.  [📄 Paper](https://doi.org/10.1016/j.cub.2011.01.031)
-
-**CLSR: Decoding Complex Video and Story Stimuli from fMRI** (Nat Neurosci 2023) – Large-scale movie & story dataset with joint video / text decoding from fMRI.  [📄 Paper](https://doi.org/10.1038/s41593-023-01327-2)
-
+> For each paper, tags roughly indicate task & method, e.g. _[Brain→Image] [Diffusion] [NSD]_.
 
 ---
 
-## Visual-to-fMRI Encoding & Data Augmentation
+### 2.1 Brain → Image (Static Vision)
 
-> These works learn **image → fMRI** mappings (encoding) and often use them to synthesize fMRI for data augmentation or analysis, which can improve fMRI-to-image decoders.
+#### 2.1.1 Early / Pre-deep
 
-**SynBrain: Enhancing Visual-to-fMRI Synthesis via Probabilistic Representation Learning** (NeurIPS 2025 Poster / arXiv 2025) – Probabilistic visual-to-fMRI encoder with BrainVAE and semantic-to-neural mapper; synthesized fMRI improves downstream decoding.  [📄 Paper](https://arxiv.org/abs/2508.10298)  •  [📄 PDF](https://openreview.net/pdf/3971b93a4f08a3549d29904c63d514e0df961001.pdf)
+**Reconstructing Natural Scenes from fMRI Patterns Using Hierarchical Visual Features**  
+[📄 Paper](https://doi.org/10.1016/j.neuroimage.2010.07.063) • _[Brain→Image] [Early]_
 
+**Visual Experience Reconstruction from Movie fMRI**  
+[📄 Paper](https://doi.org/10.1016/j.cub.2011.01.031) • _[Brain→Video] [Early]_
+
+#### 2.1.2 GAN / VAE–based
+
+**Deep Image Reconstruction from Human Brain Activity**  
+[📄 Paper](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006633) • [💻 Code](https://github.com/KamitaniLab/DeepImageReconstruction) • [📂 Dataset](https://openneuro.org/datasets/ds001506) • _[Brain→Image] [GAN/VAE]_
+
+**From Voxels to Pixels and Back: Self-supervision in Natural-Image Reconstruction from fMRI**  
+[📄 Paper](https://arxiv.org/abs/1907.02431) • [💻 Code](https://github.com/WeizmannVision/ssfmri2im) • _[Brain→Image] [Self-supervised]_
+
+**Reconstructing Natural Scenes from fMRI Patterns Using BigBiGAN**  
+[📄 Paper](https://arxiv.org/abs/2011.12243) • _[Brain→Image] [BigGAN]_
+
+#### 2.1.3 Diffusion-based
+
+**Brain-Diffuser: Natural Scene Reconstruction from fMRI Signals Using Generative Latent Diffusion**  
+[📄 Paper](https://www.nature.com/articles/s41598-023-42891-8) • [💻 Code](https://github.com/ozcelikfu/brain-diffuser) • [📂 Dataset: NSD](https://naturalscenesdataset.org/) • _[Brain→Image] [Diffusion] [NSD]_
+
+**Reconstructing the Mind’s Eye: fMRI-to-Image with Contrastive Learning and Diffusion Priors (MindEye)**  
+[📄 Paper](https://arxiv.org/abs/2305.18274) • [🌐 Project](https://medarc-ai.github.io/mindeye/) • [💻 Code](https://github.com/MedARC-AI/fMRI-reconstruction-NSD) • _[Brain→Image] [Diffusion] [Contrastive]_
+
+**MindDiffuser: Controlled Image Reconstruction from Human Brain Activity with Semantic and Structural Diffusion**  
+[📄 Paper](https://arxiv.org/abs/2308.04249) • [💻 Code](https://github.com/YingxingLu/MindDiffuser) • _[Brain→Image] [Diffusion]_
+
+**NeuralDiffuser: Neuroscience-Inspired Diffusion Guidance for fMRI Visual Reconstruction**  
+[📄 Paper](https://arxiv.org/abs/2401.01713) • [💻 Code](https://github.com/neu-diffusion/NeuralDiffuser) • _[Brain→Image] [Diffusion]_
+
+**Mental Image Reconstruction from Human Brain Activity**  
+[📄 Paper](https://www.sciencedirect.com/science/article/pii/S0893608023006470) • _[Brain→Image] [Diffusion]_
+
+**MindEye2: Shared-Subject Models Enable fMRI-To-Image With 1 Hour of Data**  
+[📄 Paper](https://arxiv.org/abs/2403.11207) • [🌐 Project](https://medarc-ai.github.io/mindeye2/) • [💻 Code](https://github.com/MedARC-AI/MindEyeV2) • _[Brain→Image] [Diffusion] [Shared-subject]_
+
+**Bridging Brains and Concepts: Interpretable Visual Decoding from fMRI with Semantic Bottlenecks**  
+[📄 Paper](https://openreview.net/forum?id=K6ijewH34E) • [📄 PDF](https://openreview.net/pdf/167d5c3c08cdd7367883eeec0b26002c059215f8.pdf) • _[Brain→Image] [Diffusion] [Semantic Bottleneck] [NeurIPS 2025]_  
+
+#### 2.1.4 Cross-subject / Few-shot / MoE
+
+**ZEBRA: Towards Zero-Shot Cross-Subject Generalization for Universal Brain Visual Decoding**  
+[📄 Paper](https://arxiv.org/abs/2510.27128) • [📄 PDF](https://openreview.net/pdf/7a4f583ef54685490be5c58986a3ad803aac087c.pdf) • [💻 Code](https://github.com/xmed-lab/ZEBRA) • _[Brain→Image] [Diffusion] [Cross-Subject] [NeurIPS 2025]_
+
+**MoRE-Brain: Routed Mixture of Experts for Interpretable and Generalizable Cross-Subject fMRI Visual Decoding**  
+[📄 Paper](https://arxiv.org/abs/2505.15946) • [🌐 OpenReview](https://openreview.net/forum?id=fYSPRGmS6l) • [💻 Code](https://github.com/yuxiangwei0808/MoRE-Brain) • _[Brain→Image] [MoE] [Cross-Subject] [NeurIPS 2025]_
+
+*(Other cross-subject / few-shot works can also be added here.)*
 
 ---
 
-## Audio & Music Decoding
+### 2.2 Brain → Video / Dynamic Scene
 
+**Visual Experience Reconstruction from Movie fMRI**  
+[📄 Paper](https://doi.org/10.1016/j.cub.2011.01.031) • _[Brain→Video] [Early]_
 
----
+**CLSR: Decoding Complex Video and Story Stimuli from fMRI**  
+[📄 Paper](https://doi.org/10.1038/s41593-023-01327-2) • _[Brain→Video] [Brain→Text]_
 
-## Multimodal & Foundation-Model-based Decoding
-
-**MindReader: Reconstructing Complex Images from Brain Activities** (NeurIPS 2022) – Uses CLIP space and StyleGAN2 as generative prior for complex image reconstruction from fMRI.  [📄 Paper](https://arxiv.org/abs/2209.12951)  •  [💻 Code](https://github.com/yuvalsim/MindReader)
-
-**UMBRAE: Unified Multimodal Brain Decoding** (ECCV 2024) – Unified framework that decodes images and text from brain activity using multimodal foundation models.  [📄 Paper](https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/01133.pdf)  •  [🌐 Project](https://weihaox.github.io/UMBRAE)
-
-**Joint Modeling of fMRI and EEG Imaging Using Ordinary Differential Equation-based Hypergraph Neural Networks (FE-NET)** (NeurIPS 2025) – Jointly models asynchronous fMRI-EEG data via GAN-based hypergraph generation and Neural ODE–based temporal dynamics for multimodal brain decoding.  [📄 Paper](https://openreview.net/pdf/053f8c5a43f7051852d82cdcb8ab742f69065ea2.pdf)
-
+*(Add additional movie / video reconstruction and video-captioning decoders here.)*
 
 ---
 
-## Clinical / Cognitive & Mental-State Decoding
+### 2.3 Brain → Text / Narrative
 
+**Semantic Reconstruction of Continuous Language from Non-Invasive Brain Recordings**  
+[📄 Paper](https://www.nature.com/articles/s41593-023-01304-9) • [💻 Code](https://github.com/HuthLab/semantic-decoding) • [📂 Dataset](https://openneuro.org/datasets/ds003020) • _[Brain→Text] [Narrative]_
+
+**UniCoRN: Unified Cognitive Signal ReconstructioN Bridging Cognitive Signals and Human Language**  
+[📄 Paper](https://arxiv.org/abs/2307.05355) • _[Brain→Text] [EEG+fMRI] [LLM]_
+
+**Brain-Inspired fMRI-to-Text Decoding via Incremental and Wrap-Up Language Modeling (CogReader)**  
+[📄 Paper](https://openreview.net/forum?id=REIo9ZLSYo) • [📄 PDF](https://openreview.net/pdf?id=REIo9ZLSYo) • [💻 Code](https://github.com/WENXUYUN/CogReader) • _[Brain→Text] [LLM] [NeurIPS 2025 Spotlight]_
+
+*(More language / narrative decoding works welcome.)*
 
 ---
 
-## Toolboxes, Tutorials & Awesome Lists
+### 2.4 Brain → Audio / Music
 
-**DeepImageReconstruction** – Official code for Kamitani *Deep Image Reconstruction*, including full pipeline from preprocessing to reconstruction.  [💻 Code](https://github.com/KamitaniLab/DeepImageReconstruction)
+*(Reserved for fMRI decoding of auditory scenes, speech, and music. Add works on music genre/affect, sound-category decoding, etc.)*
 
-**semantic-decoding** – Official HuthLab code for semantic reconstruction of continuous language from fMRI.  [💻 Code](https://github.com/HuthLab/semantic-decoding)
+---
 
-**MindReader (code)** – Implementation of MindReader CLIP-based decoder with StyleGAN2 generator.  [💻 Code](https://github.com/yuvalsim/MindReader)
+### 2.5 Multimodal & Foundation-Model-based Decoding
 
-**awesome-brain-decoding** – A broader awesome list covering EEG / fMRI / ECoG decoding.  [📦 GitHub](https://github.com/NeuSpeech/awesome-brain-decoding)
+**MindReader: Reconstructing Complex Images from Brain Activities**  
+[📄 Paper](https://arxiv.org/abs/2209.12951) • [💻 Code](https://github.com/yuvalsim/MindReader) • _[Brain→Image] [CLIP] [StyleGAN2]_
 
-**Awesome Brain Encoding & Decoding** – Another general collection of brain encoding / decoding papers.  [📦 GitHub](https://github.com/subbareddy248/Awesome-Brain-Encoding--Decoding)
+**UMBRAE: Unified Multimodal Brain Decoding**  
+[📄 Paper](https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/01133.pdf) • [🌐 Project](https://weihaox.github.io/UMBRAE) • _[Brain→Image] [Brain→Text] [Multimodal]_
 
+*(You can also put brain-conditional multimodal AIGC, VLM/LLM-based unified decoders here.)*
+
+---
+
+### 2.6 Clinical / Cognitive / Mental-State Decoding
+
+*(Reserved for works decoding emotion, cognitive load, disease markers, etc., from fMRI. Add when you curate them.)*
+
+---
+
+## 3. Related fMRI Modeling
+
+These works are closely related to decoding but not always “direct Brain→stimulus” decoders.
+
+### 3.1 Visual → fMRI Encoding & Data Augmentation
+
+**SynBrain: Enhancing Visual-to-fMRI Synthesis via Probabilistic Representation Learning**  
+[📄 Paper](https://arxiv.org/abs/2508.10298) • [🌐 OpenReview](https://openreview.net/forum?id=ZTHYaSxqmq) • _[Visual→fMRI] [Encoding] [Probabilistic] [NeurIPS 2025 Poster]_
+
+*(Add other visual→fMRI encoders and synthetic-fMRI data augmentation works here.)*
+
+### 3.2 Multimodal fMRI + EEG / MEG
+
+**Joint Modeling of fMRI and EEG Imaging Using Ordinary Differential Equation-Based Hypergraph Neural Networks (FE-NET)**  
+[📄 PDF](https://openreview.net/pdf/053f8c5a43f7051852d82cdcb8ab742f69065ea2.pdf) • _[fMRI+EEG] [Hypergraph] [Neural ODE] [NeurIPS 2025]_  
+
+*(Add more multimodal modeling methods, e.g., fMRI+DTI+sMRI analyses, jICA, etc.)*
+
+### 3.3 Representation Alignment & Analysis
+
+*(For encoding-only LM-alignment, RSA / brain-score analysis, representational comparisons between fMRI and deep networks. To be filled.)*
 
 ---
 
 ## Contributing
 
-Contributions are very welcome!  Before opening a PR:
+Contributions are welcome!  
 
-1. Check that the work is **about fMRI-based brain decoding or closely related encoding / data-augmentation** (or has a strong fMRI component).
-2. Choose the most appropriate category and sub-category.
-3. Use the following format for each entry:
+If you want to add or update a paper:
+
+1. Make sure it is **fMRI-related** and either:
+   - a decoding method (preferably Brain→Image/Text/Video/Audio), or  
+   - a strongly related modeling work (encoding / data augmentation / multimodal modeling).
+2. Choose the appropriate section (and sub-section).
+3. Follow this format:
 
    ```markdown
-   **Paper Title** (Conf./Journal Year) – Short one-sentence description.  [📄 Paper](...)  •  [💻 Code](...)  •  [📂 Dataset](...)
+   **Paper Title**  
+   [📄 Paper](...) • [💻 Code](...) • [📂 Dataset](...) • _[Brain→Image] [Diffusion] [NSD]_
